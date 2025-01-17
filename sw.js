@@ -25,6 +25,7 @@ self.addEventListener("fetch",e=>{
         if (!response || !response.ok) {
           throw new Error("プロキシサーバーへのリクエストに失敗しました");
         }
+        console.log(response);
         return response;
       }catch(e){
         console.error("プロキシサーバーへのリクエスト失敗:", e);
