@@ -3,7 +3,7 @@ if("serviceWorker" in navigator){
         navigator.serviceWorker.register(config.site.directory+"sw/sw.js",{scope:config.site.directory}).then(registration=>{
             console.log("サービスワーカーの登録に成功しました");
         }).catch(error=>{
-            console.error("サービスワーカーの登録に失敗しました")
+            console.error("サービスワーカーの登録に失敗しました",error)
         });
     });
 }else{
