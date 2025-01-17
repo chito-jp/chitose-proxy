@@ -9,6 +9,7 @@ self.addEventListener('activate', (event) => {
 importScripts("./config/config.js");
 
 self.addEventListener("fetch",e=>{
+  console.log(e.request.url);
   console.log(String(e.request.url).startsWith(config.serverUrl))
   if(e.request.url.startsWith(config.serverUrl)){
     return fetch(e.request);
