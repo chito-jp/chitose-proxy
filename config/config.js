@@ -1,5 +1,7 @@
-const config={
-    site:{
-        directory:"/chitose-proxy/"
+(()=>{
+    const config={
+        site:{
+            directory:"/chitose-proxy/"
+       }
     }
-}
+})();
