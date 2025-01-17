@@ -8,5 +8,6 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener("fetch",e=>{
     console.log(e.request);
+    alert(e.request);
     return fetch(e.request);
 });
