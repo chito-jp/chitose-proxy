@@ -22,6 +22,6 @@ self.addEventListener("fetch",e=>{
       });
       console.log(request);
       console.log(req_url)
-      return fetch(req_url);
+      return await fetch(req_url);
     })(),);
 });
