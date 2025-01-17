@@ -13,7 +13,11 @@ self.addEventListener("fetch",e=>{
     const req_url=decodeURIComponent(urlObj.pathname.replace(config.directory+config.scope,""));
     e.respondWith((async () => {
       e.request.url=req_url;
-      console.log(e.request);
+      const request=new Request(req_url,{
+        ...e.request
+      });
+      console.log(e.request,request);
+      console.log(e.request==request);
       console.log(req_url)
       return fetch(req_url);
     })(),);
