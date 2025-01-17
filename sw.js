@@ -9,8 +9,8 @@ self.addEventListener('activate', (event) => {
 self.addEventListener("fetch",e=>{
     console.log(e.request);
     const urlObj=new URL(e.request.url);
-    const path=urlObj.pathname.replace(config.site.directory+"app/","");
+    const path=urlObj.pathname;
     console.log(path);
-    alert(e.request);
+    window.alert(e.request);
     return fetch(e.request);
 });
