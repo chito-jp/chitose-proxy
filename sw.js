@@ -13,17 +13,9 @@ self.addEventListener("fetch",e=>{
     const urlObj=new URL(e.request.url);
     const req_url=decodeURIComponent(urlObj.pathname.replace(config.directory+config.scope,""));
     console.log(req_url);
-    e.respondWith((async()=>{
-      try{
-        const response = await fetch(req_url);
-        if (!response || !response.ok) {
-          throw new Error("プロキシサーバーへのリクエストに失敗しました");
-        }
-        console.log(response);
-        return response;
-      }catch(e){
-        console.error("プロキシサーバーへのリクエスト失敗:", e);
-        return new Response("プロキシエラー", { status: 502 });
-      }
-    }));
+    e.respondWith((async () => {
+        const cachedResponse = await caches.match(e.request);
+        if (cachedResponse) return cachedResponse;
+        return fetch(e.request);
+      })(),);
 });
