@@ -1,13 +1,16 @@
 self.addEventListener('install', (event) => {
-  self.skipWaiting(); // 新しいサービスワーカーが即座に有効になるように
+  self.skipWaiting();
 });
   
 self.addEventListener('activate', (event) => {
-  event.waitUntil(self.clients.claim()); // 現在のクライアントに対してすぐにサービスワーカーを適用
+  event.waitUntil(self.clients.claim());
 });
 
 self.addEventListener("fetch",e=>{
     console.log(e.request);
+    const urlObj=new URL(e.request.url);
+    const path=urlObj.pathname.replace(config.site.directory+"app/","");
+    console.log(path);
     alert(e.request);
     return fetch(e.request);
 });
