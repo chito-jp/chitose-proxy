@@ -1,4 +1,3 @@
-setConfig(window);
 if("serviceWorker" in navigator){
     window.addEventListener("load",()=>{
         navigator.serviceWorker.register("./sw.js",{scope:config.site.directory+"app/"}).then(registration=>{

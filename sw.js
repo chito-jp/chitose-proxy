@@ -8,8 +8,6 @@ self.addEventListener('activate', (event) => {
 
 importScripts("./config/config.js");
 
-setConfig(self);
-
 self.addEventListener("fetch",e=>{
     console.log(e.request);
     const urlObj=new URL(e.request.url);
