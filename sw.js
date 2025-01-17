@@ -10,7 +10,7 @@ importScripts("./config/config.js");
 
 self.addEventListener("fetch",e=>{
     const urlObj=new URL(e.request.url);
-    const req_url=config.serverUrl+decodeURIComponent(urlObj.pathname.replace(config.directory+config.scope,""));
+    const req_url=config.serverUrl+encodeURIComponent(urlObj.pathname.replace(config.directory+config.scope,""));
     e.respondWith((async () => {
       e.request.url=req_url;
       const request=new Request(req_url,{
