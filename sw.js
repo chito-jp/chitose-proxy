@@ -15,7 +15,16 @@ self.addEventListener("fetch",e=>{
     console.log(req_url);
     e.respondWith((async()=>{
       try{
-        const response=await fetch({...e.request,url:req_url});
+        const request = new Request(req_url, {
+          method: e.request.method,
+          headers: e.request.headers,
+          body: e.request.body,
+          redirect: e.request.redirect,
+        });
+        const response = await fetch(request);
+        if (!response || !response.ok) {
+          throw new Error("プロキシサーバーへのリクエストに失敗しました");
+        }
         return response;
       }catch(e){
         console.error("プロキシサーバーへのリクエスト失敗:", e);
