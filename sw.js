@@ -12,6 +12,6 @@ self.addEventListener("fetch",e=>{
     console.log(e.request);
     const urlObj=new URL(e.request.url);
     const path=urlObj.pathname.replace(config.directory+config.scope,"");
-    console.log(path);
+    console.log(decodeURIComponent(path));
     return fetch(e.request);
 });
