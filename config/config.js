@@ -1,6 +1,5 @@
 const config={
-    site:{
-        directory:"/chitose-proxy/"
-   }
+    directory:"/chitose-proxy/",
+    scope:"app/"
 }
 if(typeof self =="object")self.config=config;

@@ -11,8 +11,7 @@ importScripts("./config/config.js");
 self.addEventListener("fetch",e=>{
     console.log(e.request);
     const urlObj=new URL(e.request.url);
-    const path=urlObj.pathname.replace(config.site.directory,"");
+    const path=urlObj.pathname.replace(config.directory+config.scope,"");
     console.log(path);
-    window.alert(e.request);
     return fetch(e.request);
 });
