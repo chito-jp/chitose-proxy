@@ -1,8 +1,7 @@
-(()=>{
-    const scope=(typeof window==undefined)? self:window;
+function setConfig(scope){
     scope.config={
         site:{
             directory:"/chitose-proxy/"
        }
     }
-})();
+}
