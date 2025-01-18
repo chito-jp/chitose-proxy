@@ -6,7 +6,7 @@ self.addEventListener('activate', (event) => {
   event.waitUntil(self.clients.claim());
 });
 
-importScripts("./config/config.js");
+importScripts("./sw/config.js");
 
 self.addEventListener("fetch",e=>{
   console.log(e.request.url);
