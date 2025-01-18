@@ -9,8 +9,16 @@
     <script src="./sw/config.js"></script>
     <script src="./sw/sw-register.js"></script>
     <script>
-        const url=`https://google.com/search?q=${prompt()}`
-        location.href=`${config.directory}app/${encodeURIComponent(url)}`;
+        location.href=`${config.directory}${config.scope}${encodeURIComponent(formatSearch(prompt()))}`;
+        function formatSearch(q){
+            try{
+                return new URL(q);
+            }catch(e){}
+            try{
+                const url=new URL(`http://${q}`);
+            }catch(e){}
+            return new URL(`https://duckduckgo.com/?q=${q}`).toString();
+        }
     </script>
 </body>
 </html>
